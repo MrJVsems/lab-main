@@ -11,7 +11,8 @@ import { MedPreparations } from './entity/MedPreparations.entity';
     TypeOrmModule.forRootAsync({
       useFactory: () => ({
         type: 'postgres',
-        entities: [Banks, Providers, Photo, MedPreparations],
+        // entities: ['./entity/*.ts'],
+        autoLoadEntities: true,
         host: 'localhost',
         port: 5432,
         username: 'ZooRole',
