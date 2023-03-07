@@ -15,6 +15,7 @@ export class Banks {
   @Column({ length: 500 })
   OGRN: string;
 
+
   @OneToMany(() => Providers, (Providers) => Providers.Bank)
   providers: Providers;
 }

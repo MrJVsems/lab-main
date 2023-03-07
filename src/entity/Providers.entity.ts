@@ -1,6 +1,6 @@
-import {Entity, Column, PrimaryGeneratedColumn, ManyToOne, OneToMany,} from 'typeorm';
-import {Banks} from "./Banks.entity";
-import {MedPreparations} from "./MedPreparations.entity";
+import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, OneToMany,} from 'typeorm';
+import { Banks } from "./Banks.entity";
+import { MedPreparations } from "./MedPreparations.entity";
 
 @Entity('Providers')
 export class Providers {
@@ -22,7 +22,12 @@ export class Providers {
   @ManyToOne(() => Banks, (Banks) => Banks.providers)
   Bank: Banks;
 
-  @OneToMany(() => MedPreparations, (MedPreparations) => MedPreparations.providers)
-  MedPreparations: MedPreparations;
+  @Column()
+  bankId: number;
 
+  @OneToMany(
+    () => MedPreparations,
+    (MedPreparations) => MedPreparations.providers,
+  )
+  MedPreparations: MedPreparations;
 }

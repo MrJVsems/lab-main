@@ -5,14 +5,16 @@ import { Banks } from './entity/Banks.entity';
 import { Providers } from './entity/Providers.entity';
 import { Photo } from './entity/Photo.entity';
 import { MedPreparations } from './entity/MedPreparations.entity';
+import { BanksModule } from './BanksModule/banks.module';
+import {ProvidersModule} from "./ProvidersModule/providers.module";
 
 @Module({
   imports: [
     TypeOrmModule.forRootAsync({
       useFactory: () => ({
         type: 'postgres',
-        // entities: ['./entity/*.ts'],
-        autoLoadEntities: true,
+        entities: [Banks, Providers, Photo, MedPreparations],
+        //autoLoadEntities: true,
         host: 'localhost',
         port: 5432,
         username: 'ZooRole',
@@ -24,7 +26,9 @@ import { MedPreparations } from './entity/MedPreparations.entity';
         },
       }),
     }),
+    BanksModule,
     PhotoModule,
+    ProvidersModule,
   ],
   controllers: [],
   providers: [],
